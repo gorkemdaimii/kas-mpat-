@@ -10,7 +10,6 @@
       --bg1: #05020a;
       --bg2: #180b2b;
       --bg3: #3a1655;
-      --glow: rgba(245, 199, 70, 0.8);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -109,76 +108,14 @@
     }
 
     /* 24 yaprak */
-    .petal:nth-child(1)  { transform: rotate(0deg) translateY(-72%);  }
-    .petal:nth-child(2)  { transform: rotate(15deg) translateY(-72%); }
-    .petal:nth-child(3)  { transform: rotate(30deg) translateY(-72%); }
-    .petal:nth-child(4)  { transform: rotate(45deg) translateY(-72%); }
-    .petal:nth-child(5)  { transform: rotate(60deg) translateY(-72%); }
-    .petal:nth-child(6)  { transform: rotate(75deg) translateY(-72%); }
-    .petal:nth-child(7)  { transform: rotate(90deg) translateY(-72%); }
-    .petal:nth-child(8)  { transform: rotate(105deg) translateY(-72%); }
-    .petal:nth-child(9)  { transform: rotate(120deg) translateY(-72%); }
-    .petal:nth-child(10) { transform: rotate(135deg) translateY(-72%); }
-    .petal:nth-child(11) { transform: rotate(150deg) translateY(-72%); }
-    .petal:nth-child(12) { transform: rotate(165deg) translateY(-72%); }
-    .petal:nth-child(13) { transform: rotate(180deg) translateY(-72%); }
-    .petal:nth-child(14) { transform: rotate(195deg) translateY(-72%); }
-    .petal:nth-child(15) { transform: rotate(210deg) translateY(-72%); }
-    .petal:nth-child(16) { transform: rotate(225deg) translateY(-72%); }
-    .petal:nth-child(17) { transform: rotate(240deg) translateY(-72%); }
-    .petal:nth-child(18) { transform: rotate(255deg) translateY(-72%); }
-    .petal:nth-child(19) { transform: rotate(270deg) translateY(-72%); }
-    .petal:nth-child(20) { transform: rotate(285deg) translateY(-72%); }
-    .petal:nth-child(21) { transform: rotate(300deg) translateY(-72%); }
-    .petal:nth-child(22) { transform: rotate(315deg) translateY(-72%); }
-    .petal:nth-child(23) { transform: rotate(330deg) translateY(-72%); }
-    .petal:nth-child(24) { transform: rotate(345deg) translateY(-72%); }
-
-    .inner-ring {
-      position: absolute;
-      width: 54%;
-      height: 54%;
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 25% 10%, #fffad1, transparent 55%),
-        radial-gradient(circle at 60% 80%, #ffd86a, #f3b62f 60%, #7f4d01 100%);
-      box-shadow:
-        0 0 36px rgba(255, 224, 140, 0.9),
-        0 0 80px rgba(0, 0, 0, 0.9);
-      overflow: hidden;
-    }
-
-    .inner-texture {
-      position: absolute;
-      inset: 14%;
-      border-radius: inherit;
-      background-image:
-        radial-gradient(circle at 20% 20%, rgba(139, 73, 0, 0.35) 0, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.3) 0, transparent 55%),
-        repeating-radial-gradient(circle at center,
-          rgba(110, 55, 0, 0.7) 0,
-          rgba(110, 55, 0, 0.7) 1px,
-          transparent 1px,
-          transparent 3px);
-      mix-blend-mode: multiply;
-      opacity: 0.9;
-    }
-
-    .flare {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.8), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(255, 200, 0, 0.4), transparent 65%);
-      mix-blend-mode: screen;
-      opacity: 0.75;
+    .petal:nth-child(n) {
+      transform: rotate(calc((var(--i) * 15deg))) translateY(-72%);
     }
 
     /* Yazı */
     .text {
-      margin-top: 24px;
-      font-size: 24px;
+      margin-top: 28px;
+      font-size: 26px;
       color: #f7e8ff;
       letter-spacing: 0.04em;
       opacity: 0;
@@ -188,6 +125,35 @@
 
     @keyframes fadeIn {
       to { opacity: 1; }
+    }
+
+    /* Butonlar */
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards 1.8s;
+    }
+
+    .btn {
+      padding: 12px 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      color: #fceaff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(1.06);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
 
   </style>
@@ -200,30 +166,30 @@
     <div class="flower-circle">
       <div class="petal-ring">
         <!-- 24 yaprak -->
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
+        <div class="petal" style="--i:0"></div>
+        <div class="petal" style="--i:1"></div>
+        <div class="petal" style="--i:2"></div>
+        <div class="petal" style="--i:3"></div>
+        <div class="petal" style="--i:4"></div>
+        <div class="petal" style="--i:5"></div>
+        <div class="petal" style="--i:6"></div>
+        <div class="petal" style="--i:7"></div>
+        <div class="petal" style="--i:8"></div>
+        <div class="petal" style="--i:9"></div>
+        <div class="petal" style="--i:10"></div>
+        <div class="petal" style="--i:11"></div>
+        <div class="petal" style="--i:12"></div>
+        <div class="petal" style="--i:13"></div>
+        <div class="petal" style="--i:14"></div>
+        <div class="petal" style="--i:15"></div>
+        <div class="petal" style="--i:16"></div>
+        <div class="petal" style="--i:17"></div>
+        <div class="petal" style="--i:18"></div>
+        <div class="petal" style="--i:19"></div>
+        <div class="petal" style="--i:20"></div>
+        <div class="petal" style="--i:21"></div>
+        <div class="petal" style="--i:22"></div>
+        <div class="petal" style="--i:23"></div>
       </div>
 
       <div class="inner-ring">
@@ -234,5 +200,11 @@
   </div>
 
   <div class="text">barışalım mı?</div>
+
+  <div class="buttons">
+    <button class="btn">Evet</button>
+    <button class="btn">Evet</button>
+  </div>
+
 </body>
 </html>
